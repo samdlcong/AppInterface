@@ -1,6 +1,7 @@
 <?php
 
 class Response{
+	const JSON ="json";
 	/**
 	 * 按综合方式输出通讯方法
 	 * @param  integer $code   状态码
@@ -9,7 +10,7 @@ class Response{
 	 * @param  string $type    数据类型
 	 * @return string          [description]
 	 */
-	public static function show($code,$message='',$data=array(),$type){
+	public static function show($code,$message='',$data=array(),$type=self::JSON){
 		if(!is_numeric($code)){
 			return '';
 		}
@@ -19,6 +20,8 @@ class Response{
 			'message'=>$message,
 			'data'=>$data
 		);
+
+		$type = isset($_GET['format'])?$_GET['format']:$type;
 		if($type=='json'){
 			self::json($code,$message,$data);
 			exit;

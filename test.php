@@ -12,4 +12,4 @@ $arr =array(
 	)
 );
 
-Response::xml(200,'数据返回成功',$arr);
+Response::show(200,'数据返回成功',$arr);
